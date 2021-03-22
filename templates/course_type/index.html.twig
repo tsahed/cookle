@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CourseType index{% endblock %}
+
+{% block body %}
+    <h1>CourseType index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for course_type in course_types %}
+            <tr>
+                <td>{{ course_type.id }}</td>
+                <td>{{ course_type.name }}</td>
+                <td>
+                    <a href="{{ path('course_type_show', {'id': course_type.id}) }}">show</a>
+                    <a href="{{ path('course_type_edit', {'id': course_type.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('course_type_new') }}">Create new</a>
+{% endblock %}

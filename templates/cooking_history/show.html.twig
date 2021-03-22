@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CookingHistory{% endblock %}
+
+{% block body %}
+    <h1>CookingHistory</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cooking_history.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ cooking_history.date ? cooking_history.date|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('cooking_history_index') }}">back to list</a>
+
+    <a href="{{ path('cooking_history_edit', {'id': cooking_history.id}) }}">edit</a>
+
+    {{ include('cooking_history/_delete_form.html.twig') }}
+{% endblock %}

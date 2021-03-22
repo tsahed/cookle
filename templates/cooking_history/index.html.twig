@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CookingHistory index{% endblock %}
+
+{% block body %}
+    <h1>CookingHistory index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cooking_history in cooking_histories %}
+            <tr>
+                <td>{{ cooking_history.id }}</td>
+                <td>{{ cooking_history.date ? cooking_history.date|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('cooking_history_show', {'id': cooking_history.id}) }}">show</a>
+                    <a href="{{ path('cooking_history_edit', {'id': cooking_history.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('cooking_history_new') }}">Create new</a>
+{% endblock %}
