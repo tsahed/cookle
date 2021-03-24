@@ -215,4 +215,20 @@ class Recipe
 
         return $this;
     }
+
+    public function calcAverageEval() {
+        $i = 0;
+        $totalevaluation = 0;
+
+        foreach ($this->evaluation as $valeur){
+            $i++;
+            $totalevaluation += $valeur->getStar();
+        }
+        if ($i != 0) {
+            return $totalevaluation = $totalevaluation/$i;
+        }
+        else {
+            return "No note, add one";
+        }
+    }
 }

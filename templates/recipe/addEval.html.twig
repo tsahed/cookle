@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Recipe{% endblock %}
+
+{% block body %}
+    <div class="eval"> <h1>Ajouter une évaluation à {{ recipe_name }} ✅</h1>
+        {{ form_start(form_eval) }}
+        {{ form_row(form_eval.name) }}
+        {{ form_row(form_eval.star) }}
+        {{ form_widget(form_eval.save,
+            { 'attr': { 'class': 'btn btn-info' }
+            })
+        }}
+        {{ form_end(form_eval) }}
+    </div>
+{% endblock %}

@@ -4,6 +4,9 @@ namespace App\Form;
 
 use App\Entity\Evaluation;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,10 +15,10 @@ class EvaluationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Date')
-            ->add('name')
-            ->add('star')
-        ;
+            ->add('name', TextType::class, ['label' => 'Votre nom'])
+            ->add('star', IntegerType::class, ['label' => 'Saisissez votre note'])
+            ->add('save', SubmitType::class, ['label' => 'Enregistrez votre évaluation'])
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

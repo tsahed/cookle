@@ -9,18 +9,27 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>COOKLE ✅</h1>
 
     <p>Recipe of the day :</p>
     <p>{{ ramdomRecipe.title }}</p>
 
     <p>All the recipes :</p>
-    <p>{{ recipe.title }}</p>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/symfony/cookle/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/symfony/cookle/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
+    <div class="container">
+        <div class="row">
+            {% for r in recipe_list %}
+                <div class="col">
+                    <div class="card mt-5" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ r.title }}</h5>
+                            <p>Note : {{ r.calcAverageEval }}</p>
+                            <a href="{{ path('recipe_edit', { id: r.id }) }}" class="btn btn-primary">Modifer</a>
+                            <a href="{{ path('recipe_eval', { id: r.id }) }}" class="btn btn-primary">Evaluer</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 </div>
 {% endblock %}
